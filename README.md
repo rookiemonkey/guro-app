@@ -18,6 +18,7 @@ An app specifically designed for teachers. It has a simple and intuitive interfa
 ## Setup Locally
 - Setup the dependencies and database
   ```
+    $ EDITOR=vim bundle exec rails credentials:edit
     $ bundle install
     $ npm install
     $ docker-compose up

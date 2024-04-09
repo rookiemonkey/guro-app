@@ -9,7 +9,8 @@ jobs:
         image: postgres
         ports: ['5432:5432']
         env:
-          POSTGRES_PASSWORD: 'test'
+          POSTGRES_USER: "runner"
+          POSTGRES_HOST_AUTH_METHOD: "trust"
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -25,19 +26,10 @@ jobs:
         ruby-version: 2.7.4
 
     - name: Install dependencies
-      run: |
-        bundle install
+      run: bundle install
 
     - name: Setup Database
-      run: |
-        cp config/database.yml.sample config/database.yml
-        yarn install --check-files
-        bundle exec rake db:create
-        bundle exec rake db:schema:load
-      env:
-        DATABASE_HOST: 127.0.0.1
-        DATABASE_USERNAME: 'postgres'
-        DATABASE_PASSWORD: 'test'
+      run: rails db:setup
 
     - name: Run Rubocop
       run: bundle exec rubocop
@@ -45,8 +37,5 @@ jobs:
     - name: Run Tests
       run: bundle exec rspec
       env:
-        DATABASE_HOST: 127.0.0.1
-        DATABASE_USERNAME: 'postgres'
-        DATABASE_PASSWORD: 'test'
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}

@@ -29,6 +29,9 @@ jobs:
     - name: Setup Database
       run: bin/rails db:prepare
 
+    - name: Install Webpacker
+      run: bin/rails webpacker:install
+
     - name: Run Webpacker
       run: bin/webpack
 

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  db:
+    container_name: 'guro_app'
+    image: 'postgres:12.6'
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "$USER"
+      POSTGRES_HOST_AUTH_METHOD: "trust"

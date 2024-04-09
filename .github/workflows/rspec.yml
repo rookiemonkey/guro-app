@@ -27,7 +27,7 @@ jobs:
         bundler-cache: true
 
     - name: Setup Database
-      run: rails db:setup
+      run: bin/rails db:prepare
 
     - name: Run Rubocop
       run: bundle exec rubocop

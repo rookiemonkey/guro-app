@@ -26,9 +26,6 @@ jobs:
         ruby-version: 2.7.4
         bundler-cache: true
 
-    - name: Create Master Key
-      run: EDITOR=vim bundle exec rails credentials:edit
-
     - name: Setup Database
       run: bin/rails db:prepare
 

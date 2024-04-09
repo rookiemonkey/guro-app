@@ -29,6 +29,9 @@ jobs:
     - name: Setup Database
       run: bin/rails db:prepare
 
+    - name: Run Webpacker
+      run: bin/webpack
+
     - name: Run Rubocop
       run: bundle exec rubocop
 

@@ -8,6 +8,7 @@ module Youtube
     parsed_response = JSON.parse(raw_response.body)
 
     videos = []
+    return videos if parsed_response['items'].nil?
 
     parsed_response['items'].each do |video|
       video_item = {}

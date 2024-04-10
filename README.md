@@ -1,4 +1,5 @@
 <img src="app/assets/images/logo_name.png" width="250px">
+<img src="screenshot.webp">
 
 ## Description
 
